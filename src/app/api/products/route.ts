@@ -6,7 +6,7 @@ const pool = new Pool({
 
 export async function GET() {
   try {
-    const result = await pool.query('SELECT id, name, price FROM products');
+    const result = await pool.query('SELECT id, name, price, image_url, description FROM products');
     return new Response(JSON.stringify(result.rows), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
