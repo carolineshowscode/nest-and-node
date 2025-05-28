@@ -1,4 +1,4 @@
-# 🛍️ Nest & Node — Homegoods E-commerce Demo
+# 🛍️ Nest & Node — Homegoods E-commerce Application
 
 A feature-flag-enabled, full-stack demo e-commerce application built with:
 
@@ -7,7 +7,7 @@ A feature-flag-enabled, full-stack demo e-commerce application built with:
 - **Optimizely (Feature Flags)**
 - **Deployed via Vercel**
 
-This project showcases a lifestyle e-commerce store for homegoods inspired by Anthropologie, with Optimizely-powered experimentation and full frontend/backend integration.
+This project showcases a lifestyle e-commerce store for homegoods, with Optimizely-powered experimentation and full frontend/backend integration.
 
 ---
 
