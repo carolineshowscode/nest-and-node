@@ -21,6 +21,7 @@ export default function HomePage() {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.productGrid}>
+        <p>This is a test</p>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
