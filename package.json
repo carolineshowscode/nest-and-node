@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@optimizely/react-sdk": "^3.2.4",
     "@types/pg": "^8.15.2",
     "next": "15.1.8",
     "pg": "^8.16.0",

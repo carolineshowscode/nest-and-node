@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background-color: #d8c8be;
+  border-bottom: 1px solid #c7b6ab;
+
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.075em;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2a1f1d;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    color: #3a2d2b;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: #5e4c49;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+}
+

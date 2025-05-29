@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import styles from '../styles/Home.module.scss';
@@ -21,7 +22,6 @@ export default function HomePage() {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.productGrid}>
-        <p>This is a test</p>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
