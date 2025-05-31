@@ -1,17 +1,44 @@
+'use client';
+
 import Image from 'next/image';
+import { withOptimizely, WithOptimizelyProps, useDecision } from '@optimizely/react-sdk';
 import styles from '../styles/ProductCard.module.scss';
 
-interface ProductCardProps {
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    image_url: string;
-    description?: string;
-  };
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image_url: string;
+  description?: string;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+type AddToCartFlagVariables = {
+  buttonText: string;
+  buttonColor: string;
+  buttonSize: string;
+};
+
+type ProductCardProps = {
+  product: Product;
+};
+
+function ProductCard({ product, optimizely }: ProductCardProps & WithOptimizelyProps) {
+  const [decision] = useDecision('add_to_cart_button_test');
+  const variables = decision.variables as AddToCartFlagVariables;
+
+  const buttonText = variables?.buttonText || 'Add to Cart';
+  const buttonColor = variables?.buttonColor || '#000';
+  const buttonSize = variables?.buttonSize || '0.5rem 1.25rem';
+
+  const handleClick = () => {
+    if (!optimizely) return;
+
+    optimizely.track('add_to_cart_click', {
+      product_name: product.name,
+      product_price: product.price,
+    });
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -25,8 +52,23 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       <h3 className={styles.title}>{product.name}</h3>
       {product.description && <p className={styles.description}>{product.description}</p>}
-      <p className={styles.price}>${product.price.toString()}</p>
-      <button className={styles.button}>Add to Cart</button>
+      <p className={styles.price}>${product.price}</p>
+      <button
+        onClick={handleClick}
+        style={{
+          backgroundColor: buttonColor,
+          color: '#fff',
+          border: 'none',
+          padding: buttonSize,
+          borderRadius: '4px',
+          cursor: 'pointer',
+        }}
+      >
+        {String(buttonText)}
+      </button>
     </div>
   );
 }
+
+export default withOptimizely(ProductCard);
+
