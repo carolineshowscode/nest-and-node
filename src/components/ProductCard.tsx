@@ -27,7 +27,7 @@ function ProductCard({ product, optimizely }: ProductCardProps & WithOptimizelyP
   const variables = decision.variables as AddToCartFlagVariables;
 
   const buttonText = variables?.buttonText || 'Add to Cart';
-  const buttonColor = variables?.buttonColor || '#000';
+  const buttonColor = variables?.buttonColor || '#222';
   const buttonSize = variables?.buttonSize || '0.5rem 1.25rem';
 
   const handleClick = () => {
@@ -50,9 +50,11 @@ function ProductCard({ product, optimizely }: ProductCardProps & WithOptimizelyP
           className={styles.image}
         />
       </div>
-      <h3 className={styles.title}>{product.name}</h3>
-      {product.description && <p className={styles.description}>{product.description}</p>}
-      <p className={styles.price}>${product.price}</p>
+      <div className={styles.cardContent}>
+        <h3 className={styles.title}>{product.name}</h3>
+        {product.description && <p className={styles.description}>{product.description}</p>}
+        <p className={styles.price}>${product.price}</p>
+      </div>
       <button
         onClick={handleClick}
         style={{
